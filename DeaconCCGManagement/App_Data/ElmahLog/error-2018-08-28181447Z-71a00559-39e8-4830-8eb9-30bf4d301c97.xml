@@ -1,0 +1,239 @@
+﻿<error errorId="71a00559-39e8-4830-8eb9-30bf4d301c97" application="/LM/W3SVC/2/ROOT" host="WIN10-3" type="Twilio.Exceptions.ApiException" message="The 'To' number +19951647325 is not a valid phone number." source="Twilio" detail="Twilio.Exceptions.ApiException: The 'To' number +19951647325 is not a valid phone number.&#xD;&#xA;   at Twilio.Clients.TwilioRestClient.ProcessResponse(Response response)&#xD;&#xA;   at Twilio.Clients.TwilioRestClient.&lt;RequestAsync&gt;d__13.MoveNext()&#xD;&#xA;--- End of stack trace from previous location where exception was thrown ---&#xD;&#xA;   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)&#xD;&#xA;   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)&#xD;&#xA;   at Twilio.Rest.Api.V2010.Account.MessageResource.&lt;CreateAsync&gt;d__6.MoveNext()&#xD;&#xA;--- End of stack trace from previous location where exception was thrown ---&#xD;&#xA;   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)&#xD;&#xA;   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)&#xD;&#xA;   at Twilio.Rest.Api.V2010.Account.MessageResource.&lt;CreateAsync&gt;d__8.MoveNext()&#xD;&#xA;--- End of stack trace from previous location where exception was thrown ---&#xD;&#xA;   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)&#xD;&#xA;   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)&#xD;&#xA;   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()&#xD;&#xA;   at DeaconCCGManagement.SmsService.TwillioWrapperClient.&lt;SendSmsAsync&gt;d__9.MoveNext() in C:\Users\Public\Documents\Hello World Projects\Deacon App\Deacon App Offline\DeaconCCGManagement\DeaconCCGManagement\SmsService\TwillioWrapperClient.cs:line 43&#xD;&#xA;--- End of stack trace from previous location where exception was thrown ---&#xD;&#xA;   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)&#xD;&#xA;   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)&#xD;&#xA;   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()&#xD;&#xA;   at DeaconCCGManagement.Controllers.CcgMembersController.&lt;SendCRManagersMessageAsync&gt;d__12.MoveNext() in C:\Users\Public\Documents\Hello World Projects\Deacon App\Deacon App Offline\DeaconCCGManagement\DeaconCCGManagement\Controllers\CcgMembersController.cs:line 316" user="pbolden@zionmbc.org" time="2018-08-28T18:14:47.7714930Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_CONTENT_LENGTH:634&#xD;&#xA;HTTP_CONTENT_TYPE:application/x-www-form-urlencoded&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.5&#xD;&#xA;HTTP_COOKIE:.AspNet.ApplicationCookie=5L_o7zi5Aw5NcerWj-nW_10FyMeWPukVdD56sIixulvnilW3d4RF2lSsbBEP9CCeH1ql3P3mdFkzS_x2ipb6eDD8RYbZ3nagV5t3amtcE-5ILNtpKV5Kb4AP_K6srChu13T-6I_qevvchahCX2DJbRU_lSDB25DEVBYNpprK6tH8v88y4NrjvrxlkOux_HE41kxlX-hvGdamu_VHp7K4TjR6maR40w6j4LabVE_P7CSoRjeYfHnosNlDW4zj0VFMvkDFg4WJy1WGSL-FeWLwq0pQCa6PXCLGNfR-jbSKQXmsylwtQb9gFqENdCPp1lZPjPbk8w6Yubqf-o9Y1yeWPBuvI5SpmKc5DQIocKM71tIEMUVGrbo7h_k_a6qbkLdcjxtQn-nJjQawM3dNRdx3c3Ch9jVUd0up8-AA9YiOfcAtGC5AEBXClqx4intRj8V3YEyUgYq1Xskm6gQDQQ3Ubbe1sU9SF5LV4nTA71NALSD3Mt3REG4wwhO24J8H6BUEbsc0DopKOC954RjSuT5UQ3hnqxaaVZezEguVfTob6gd28lLnTanz76HKbnkm1yi0; __RequestVerificationToken=W9RA-m-K23iiAwVlO91yRAZceAK38DJUR8yQUlF9BR7xbBNnPQabnruJSKA4_TDvyzkUFjjJaegEoByTREFx_5ip8WdG6foQ9ZP-40QMbFw1&#xD;&#xA;HTTP_HOST:localhost:50614&#xD;&#xA;HTTP_REFERER:http://localhost:50614/CcgMembers/Edit/87&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: keep-alive&#xD;&#xA;Content-Length: 634&#xD;&#xA;Content-Type: application/x-www-form-urlencoded&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate&#xD;&#xA;Accept-Language: en-US,en;q=0.5&#xD;&#xA;Cookie: .AspNet.ApplicationCookie=5L_o7zi5Aw5NcerWj-nW_10FyMeWPukVdD56sIixulvnilW3d4RF2lSsbBEP9CCeH1ql3P3mdFkzS_x2ipb6eDD8RYbZ3nagV5t3amtcE-5ILNtpKV5Kb4AP_K6srChu13T-6I_qevvchahCX2DJbRU_lSDB25DEVBYNpprK6tH8v88y4NrjvrxlkOux_HE41kxlX-hvGdamu_VHp7K4TjR6maR40w6j4LabVE_P7CSoRjeYfHnosNlDW4zj0VFMvkDFg4WJy1WGSL-FeWLwq0pQCa6PXCLGNfR-jbSKQXmsylwtQb9gFqENdCPp1lZPjPbk8w6Yubqf-o9Y1yeWPBuvI5SpmKc5DQIocKM71tIEMUVGrbo7h_k_a6qbkLdcjxtQn-nJjQawM3dNRdx3c3Ch9jVUd0up8-AA9YiOfcAtGC5AEBXClqx4intRj8V3YEyUgYq1Xskm6gQDQQ3Ubbe1sU9SF5LV4nTA71NALSD3Mt3REG4wwhO24J8H6BUEbsc0DopKOC954RjSuT5UQ3hnqxaaVZezEguVfTob6gd28lLnTanz76HKbnkm1yi0; __RequestVerificationToken=W9RA-m-K23iiAwVlO91yRAZceAK38DJUR8yQUlF9BR7xbBNnPQabnruJSKA4_TDvyzkUFjjJaegEoByTREFx_5ip8WdG6foQ9ZP-40QMbFw1&#xD;&#xA;Host: localhost:50614&#xD;&#xA;Referer: http://localhost:50614/CcgMembers/Edit/87&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0&#xD;&#xA;Upgrade-Insecure-Requests: 1&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/2/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="C:\Users\Public\Documents\Hello World Projects\Deacon App\Deacon App Offline\DeaconCCGManagement\DeaconCCGManagement\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="pbolden@zionmbc.org" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="pbolden@zionmbc.org" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="pbolden@zionmbc.org" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="634" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="2" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/2" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/CcgMembers/Edit/87" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="C:\Users\Public\Documents\Hello World Projects\Deacon App\Deacon App Offline\DeaconCCGManagement\DeaconCCGManagement\CcgMembers\Edit\87" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="49831" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="POST" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/CcgMembers/Edit/87" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="50614" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/CcgMembers/Edit/87" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_CONTENT_LENGTH">
+      <value string="634" />
+    </item>
+    <item name="HTTP_CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.5" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string=".AspNet.ApplicationCookie=5L_o7zi5Aw5NcerWj-nW_10FyMeWPukVdD56sIixulvnilW3d4RF2lSsbBEP9CCeH1ql3P3mdFkzS_x2ipb6eDD8RYbZ3nagV5t3amtcE-5ILNtpKV5Kb4AP_K6srChu13T-6I_qevvchahCX2DJbRU_lSDB25DEVBYNpprK6tH8v88y4NrjvrxlkOux_HE41kxlX-hvGdamu_VHp7K4TjR6maR40w6j4LabVE_P7CSoRjeYfHnosNlDW4zj0VFMvkDFg4WJy1WGSL-FeWLwq0pQCa6PXCLGNfR-jbSKQXmsylwtQb9gFqENdCPp1lZPjPbk8w6Yubqf-o9Y1yeWPBuvI5SpmKc5DQIocKM71tIEMUVGrbo7h_k_a6qbkLdcjxtQn-nJjQawM3dNRdx3c3Ch9jVUd0up8-AA9YiOfcAtGC5AEBXClqx4intRj8V3YEyUgYq1Xskm6gQDQQ3Ubbe1sU9SF5LV4nTA71NALSD3Mt3REG4wwhO24J8H6BUEbsc0DopKOC954RjSuT5UQ3hnqxaaVZezEguVfTob6gd28lLnTanz76HKbnkm1yi0; __RequestVerificationToken=W9RA-m-K23iiAwVlO91yRAZceAK38DJUR8yQUlF9BR7xbBNnPQabnruJSKA4_TDvyzkUFjjJaegEoByTREFx_5ip8WdG6foQ9ZP-40QMbFw1" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:50614" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://localhost:50614/CcgMembers/Edit/87" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+    <item name="HTTP_APPLICATIONINSIGHTS_REQUESTTRACKINGTELEMETRYMODULE_ROOTREQUEST_ID">
+      <value string="664179cb-005d-4397-b422-69e939f5c72e" />
+    </item>
+  </serverVariables>
+  <form>
+    <item name="__RequestVerificationToken">
+      <value string="UWfOgFkcFHpohdBYDxiP1C0Yq6lm0Ao3tn4msCOgFmYPPTNvviG0pm_VdSxmZjkmG_0RXi-FFKx1htdihm9E2fBz6xB6uGSlBe0dRZn4n8Xi3-KXObcTi9mAPNsyujF-wG-FOS5SIpKhjFeg1PyImQ2" />
+    </item>
+    <item name="Id">
+      <value string="87" />
+    </item>
+    <item name="ReturnUrl">
+      <value string="http://localhost:50614/CcgMembers?getAll=False" />
+    </item>
+    <item name="CcgMemberId">
+      <value string="87" />
+    </item>
+    <item name="LastName">
+      <value string="Bryant" />
+    </item>
+    <item name="FirstName">
+      <value string="Will" />
+    </item>
+    <item name="Title">
+      <value string="" />
+    </item>
+    <item name="Suffix">
+      <value string="" />
+    </item>
+    <item name="Address">
+      <value string="114 SE WHITLEY RD" />
+    </item>
+    <item name="City">
+      <value string="BEVERLY HILLS" />
+    </item>
+    <item name="State">
+      <value string="CA" />
+    </item>
+    <item name="ZipCode">
+      <value string="90211" />
+    </item>
+    <item name="PhoneNumber">
+      <value string="(562) 948-8875" />
+    </item>
+    <item name="CellPhoneNumber">
+      <value string="(562) 948-8871" />
+    </item>
+    <item name="BirthDate">
+      <value string="12/18/2013" />
+    </item>
+    <item name="AnniversaryDate">
+      <value string="10/18/2009" />
+    </item>
+    <item name="EmailAddress">
+      <value string="wbryant@helloworld.com" />
+    </item>
+    <item name="IsMemberActive">
+      <value string="true" />
+      <value string="false" />
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="CcgId">
+      <value string="5" />
+    </item>
+  </form>
+  <cookies>
+    <item name=".AspNet.ApplicationCookie">
+      <value string="5L_o7zi5Aw5NcerWj-nW_10FyMeWPukVdD56sIixulvnilW3d4RF2lSsbBEP9CCeH1ql3P3mdFkzS_x2ipb6eDD8RYbZ3nagV5t3amtcE-5ILNtpKV5Kb4AP_K6srChu13T-6I_qevvchahCX2DJbRU_lSDB25DEVBYNpprK6tH8v88y4NrjvrxlkOux_HE41kxlX-hvGdamu_VHp7K4TjR6maR40w6j4LabVE_P7CSoRjeYfHnosNlDW4zj0VFMvkDFg4WJy1WGSL-FeWLwq0pQCa6PXCLGNfR-jbSKQXmsylwtQb9gFqENdCPp1lZPjPbk8w6Yubqf-o9Y1yeWPBuvI5SpmKc5DQIocKM71tIEMUVGrbo7h_k_a6qbkLdcjxtQn-nJjQawM3dNRdx3c3Ch9jVUd0up8-AA9YiOfcAtGC5AEBXClqx4intRj8V3YEyUgYq1Xskm6gQDQQ3Ubbe1sU9SF5LV4nTA71NALSD3Mt3REG4wwhO24J8H6BUEbsc0DopKOC954RjSuT5UQ3hnqxaaVZezEguVfTob6gd28lLnTanz76HKbnkm1yi0" />
+    </item>
+    <item name="__RequestVerificationToken">
+      <value string="W9RA-m-K23iiAwVlO91yRAZceAK38DJUR8yQUlF9BR7xbBNnPQabnruJSKA4_TDvyzkUFjjJaegEoByTREFx_5ip8WdG6foQ9ZP-40QMbFw1" />
+    </item>
+  </cookies>
+</error>

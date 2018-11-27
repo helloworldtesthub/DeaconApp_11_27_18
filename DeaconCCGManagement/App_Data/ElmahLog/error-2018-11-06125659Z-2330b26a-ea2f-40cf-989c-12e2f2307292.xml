@@ -1,0 +1,173 @@
+﻿<error errorId="2330b26a-ea2f-40cf-989c-12e2f2307292" application="/LM/W3SVC/2/ROOT" host="WIN10-3" type="System.Net.Sockets.SocketException" message="No connection could be made because the target machine actively refused it 127.0.0.1:10000" source="System" detail="Microsoft.WindowsAzure.Storage.StorageException: Unable to connect to the remote server ---&gt; System.Net.WebException: Unable to connect to the remote server ---&gt; System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:10000&#xD;&#xA;   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)&#xD;&#xA;   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket&amp; socket, IPAddress&amp; address, ConnectSocketState state, IAsyncResult asyncResult, Exception&amp; exception)&#xD;&#xA;   --- End of inner exception stack trace ---&#xD;&#xA;   at System.Net.HttpWebRequest.GetResponse()&#xD;&#xA;   at Microsoft.WindowsAzure.Storage.Core.Executor.Executor.ExecuteSync[T](RESTCommand`1 cmd, IRetryPolicy policy, OperationContext operationContext) in c:\Program Files (x86)\Jenkins\workspace\release_dotnet_master\Lib\ClassLibraryCommon\Core\Executor\Executor.cs:line 695&#xD;&#xA;   --- End of inner exception stack trace ---&#xD;&#xA;   at Microsoft.WindowsAzure.Storage.Core.Executor.Executor.ExecuteSync[T](RESTCommand`1 cmd, IRetryPolicy policy, OperationContext operationContext) in c:\Program Files (x86)\Jenkins\workspace\release_dotnet_master\Lib\ClassLibraryCommon\Core\Executor\Executor.cs:line 604&#xD;&#xA;   at Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer.Create(BlobContainerPublicAccessType accessType, BlobRequestOptions requestOptions, OperationContext operationContext) in c:\Program Files (x86)\Jenkins\workspace\release_dotnet_master\Lib\ClassLibraryCommon\Blob\CloudBlobContainer.cs:line 68&#xD;&#xA;   at Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer.CreateIfNotExists(BlobContainerPublicAccessType accessType, BlobRequestOptions requestOptions, OperationContext operationContext) in c:\Program Files (x86)\Jenkins\workspace\release_dotnet_master\Lib\ClassLibraryCommon\Blob\CloudBlobContainer.cs:line 233&#xD;&#xA;   at Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer.CreateIfNotExists(BlobRequestOptions requestOptions, OperationContext operationContext) in c:\Program Files (x86)\Jenkins\workspace\release_dotnet_master\Lib\ClassLibraryCommon\Blob\CloudBlobContainer.cs:line 196&#xD;&#xA;   at DeaconCCGManagement.BlobStorage.BlobStorageReposity.Init() in C:\Users\Public\Documents\Hello World Projects\Deacon App\Deacon App Offline\DeaconCCGManagement\DeaconCCGManagement\BlobStorage\BlobStorageReposity.cs:line 55&#xD;&#xA;Request Information&#xD;&#xA;RequestID:&#xD;&#xA;RequestDate:&#xD;&#xA;StatusMessage:&#xD;&#xA;ErrorCode:&#xD;&#xA;" user="pbolden@zionmbc.org" time="2018-11-06T12:56:59.3663050Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.9&#xD;&#xA;HTTP_COOKIE:.AspNet.ApplicationCookie=fGm2t2dSSni1lirSuzDn08Ts_ykOc3fCIuGc9IOay9CbVIZxrvi_xD0CIxT43GiMNsxRHBLVuLW45ZroCPmrZLkVZk3KtEMnf-HWXMEYN7GVe-UveYae7L1zPnvpAJCKglP2if8tUFd1pdFYDcKYihM-nSOF48pMuCgG5-sgOi9Ns4AJ95-GTP9Sxr1n6Gouon6LIJuOYae6wS4q2WK3MeaTfB_3FBd4gJqUPGXTJW7SzY3z_NwDiTY1BV2H0m7q1u_EezrfUoDcFSGAUuiCWKD_mrrRVvMpo5jmI2467o5-WmxESa40eJw_BDwE8ncL6CnsVEjTmfMlKtLVB1tytN6wOZ2NnoKaSMqLp-fJ8pjkiPTMWGSi8R-SBMGPpE_tr0aiQrOd4bnM7gRHlRHvCs13joNhJ9v7ej2TjtnHQFMRHgW3pWv4ZWFFs461vi1nWBQT8FylH8J2yutqeQLeDUJKvuHqGZynLpOLCf2-ymoqY8yq4dHA-CVvmWahdI6hKWd1HWsw7b1S86RLC4XNHhs8FrPFHxhrFa37aA03AxIQjQ3tSzdBAmWzCeu_HzYQ&#xD;&#xA;HTTP_HOST:localhost:50614&#xD;&#xA;HTTP_REFERER:http://localhost:50614/&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: keep-alive&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: en-US,en;q=0.9&#xD;&#xA;Cookie: .AspNet.ApplicationCookie=fGm2t2dSSni1lirSuzDn08Ts_ykOc3fCIuGc9IOay9CbVIZxrvi_xD0CIxT43GiMNsxRHBLVuLW45ZroCPmrZLkVZk3KtEMnf-HWXMEYN7GVe-UveYae7L1zPnvpAJCKglP2if8tUFd1pdFYDcKYihM-nSOF48pMuCgG5-sgOi9Ns4AJ95-GTP9Sxr1n6Gouon6LIJuOYae6wS4q2WK3MeaTfB_3FBd4gJqUPGXTJW7SzY3z_NwDiTY1BV2H0m7q1u_EezrfUoDcFSGAUuiCWKD_mrrRVvMpo5jmI2467o5-WmxESa40eJw_BDwE8ncL6CnsVEjTmfMlKtLVB1tytN6wOZ2NnoKaSMqLp-fJ8pjkiPTMWGSi8R-SBMGPpE_tr0aiQrOd4bnM7gRHlRHvCs13joNhJ9v7ej2TjtnHQFMRHgW3pWv4ZWFFs461vi1nWBQT8FylH8J2yutqeQLeDUJKvuHqGZynLpOLCf2-ymoqY8yq4dHA-CVvmWahdI6hKWd1HWsw7b1S86RLC4XNHhs8FrPFHxhrFa37aA03AxIQjQ3tSzdBAmWzCeu_HzYQ&#xD;&#xA;Host: localhost:50614&#xD;&#xA;Referer: http://localhost:50614/&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36&#xD;&#xA;Upgrade-Insecure-Requests: 1&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/2/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="C:\Users\Public\Documents\Hello World Projects\Deacon App\Deacon App Offline\DeaconCCGManagement\DeaconCCGManagement\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="pbolden@zionmbc.org" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="pbolden@zionmbc.org" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="pbolden@zionmbc.org" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="2" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/2" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/CcgMembers" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="C:\Users\Public\Documents\Hello World Projects\Deacon App\Deacon App Offline\DeaconCCGManagement\DeaconCCGManagement\CcgMembers" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="getAll=False" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="51021" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/CcgMembers" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="50614" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/CcgMembers" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.9" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string=".AspNet.ApplicationCookie=fGm2t2dSSni1lirSuzDn08Ts_ykOc3fCIuGc9IOay9CbVIZxrvi_xD0CIxT43GiMNsxRHBLVuLW45ZroCPmrZLkVZk3KtEMnf-HWXMEYN7GVe-UveYae7L1zPnvpAJCKglP2if8tUFd1pdFYDcKYihM-nSOF48pMuCgG5-sgOi9Ns4AJ95-GTP9Sxr1n6Gouon6LIJuOYae6wS4q2WK3MeaTfB_3FBd4gJqUPGXTJW7SzY3z_NwDiTY1BV2H0m7q1u_EezrfUoDcFSGAUuiCWKD_mrrRVvMpo5jmI2467o5-WmxESa40eJw_BDwE8ncL6CnsVEjTmfMlKtLVB1tytN6wOZ2NnoKaSMqLp-fJ8pjkiPTMWGSi8R-SBMGPpE_tr0aiQrOd4bnM7gRHlRHvCs13joNhJ9v7ej2TjtnHQFMRHgW3pWv4ZWFFs461vi1nWBQT8FylH8J2yutqeQLeDUJKvuHqGZynLpOLCf2-ymoqY8yq4dHA-CVvmWahdI6hKWd1HWsw7b1S86RLC4XNHhs8FrPFHxhrFa37aA03AxIQjQ3tSzdBAmWzCeu_HzYQ" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:50614" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://localhost:50614/" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+    <item name="HTTP_APPLICATIONINSIGHTS_REQUESTTRACKINGTELEMETRYMODULE_ROOTREQUEST_ID">
+      <value string="b6301bff-59ca-4037-ab97-6ea1b7eda085" />
+    </item>
+  </serverVariables>
+  <queryString>
+    <item name="getAll">
+      <value string="False" />
+    </item>
+  </queryString>
+  <cookies>
+    <item name=".AspNet.ApplicationCookie">
+      <value string="fGm2t2dSSni1lirSuzDn08Ts_ykOc3fCIuGc9IOay9CbVIZxrvi_xD0CIxT43GiMNsxRHBLVuLW45ZroCPmrZLkVZk3KtEMnf-HWXMEYN7GVe-UveYae7L1zPnvpAJCKglP2if8tUFd1pdFYDcKYihM-nSOF48pMuCgG5-sgOi9Ns4AJ95-GTP9Sxr1n6Gouon6LIJuOYae6wS4q2WK3MeaTfB_3FBd4gJqUPGXTJW7SzY3z_NwDiTY1BV2H0m7q1u_EezrfUoDcFSGAUuiCWKD_mrrRVvMpo5jmI2467o5-WmxESa40eJw_BDwE8ncL6CnsVEjTmfMlKtLVB1tytN6wOZ2NnoKaSMqLp-fJ8pjkiPTMWGSi8R-SBMGPpE_tr0aiQrOd4bnM7gRHlRHvCs13joNhJ9v7ej2TjtnHQFMRHgW3pWv4ZWFFs461vi1nWBQT8FylH8J2yutqeQLeDUJKvuHqGZynLpOLCf2-ymoqY8yq4dHA-CVvmWahdI6hKWd1HWsw7b1S86RLC4XNHhs8FrPFHxhrFa37aA03AxIQjQ3tSzdBAmWzCeu_HzYQ" />
+    </item>
+  </cookies>
+</error>
