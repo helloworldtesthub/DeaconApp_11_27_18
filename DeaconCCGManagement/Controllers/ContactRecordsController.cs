@@ -32,7 +32,7 @@ namespace DeaconCCGManagement.Controllers
             int? sortOption = (int)ContactsSort.DateDescending, string query = null,
             int? dateRangeFilter = (int)DateRangeFilter.LastMonth)
         {
-            var dateFilter = dateRangeFilter == null ? DateRangeFilter.ThreeMonths : (DateRangeFilter)dateRangeFilter;
+            var dateFilter = dateRangeFilter == null ? DateRangeFilter.LastMonth : (DateRangeFilter)dateRangeFilter;
             var contactsSort = sortOption == null ? ContactsSort.DateDescending : (ContactsSort)sortOption;
 
             #region Set params to pass to view
