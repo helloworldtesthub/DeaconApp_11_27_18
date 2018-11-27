@@ -30,7 +30,7 @@ namespace DeaconCCGManagement.Controllers
         public ActionResult Index(int? memberId, int? ccgId,
             int? page = 1, int? itemsPerPage = 10, bool getAll = false, bool archive = false,
             int? sortOption = (int)ContactsSort.DateDescending, string query = null,
-            int? dateRangeFilter = (int)DateRangeFilter.ThreeMonths)
+            int? dateRangeFilter = (int)DateRangeFilter.LastMonth)
         {
             var dateFilter = dateRangeFilter == null ? DateRangeFilter.ThreeMonths : (DateRangeFilter)dateRangeFilter;
             var contactsSort = sortOption == null ? ContactsSort.DateDescending : (ContactsSort)sortOption;
