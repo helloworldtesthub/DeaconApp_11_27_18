@@ -49,13 +49,10 @@ namespace DeaconCCGManagement.Services
             }
             // Get all contact records for a CCG passed to parameter
             if (ccgId != null && ccgId != -1)
-            {
-                return unitOfWork.ContactRecordRepository
-                    .GetContactRecords(out totalItemsCount, c => c.CCGMember.CcgId == ccgId
-                    && c.Archive == archive
-                    && c.Timestamp > dateTimeOffset
-                    && c.ContactType.Name != _prayerRequestName
-                    && (c.Subject.Contains(query) || c.Comments.Contains(query)), page, itemsPerPage).ToList();
+            {    
+                return GetContactRecordsForCcg(ccgId, page, itemsPerPage, 
+                    archive, user, dateTimeOffset, query,
+                    out actionResult, out totalItemsCount).ToList();
             }
             // Get all contact records; admin or leadership only
             if (getAll)
@@ -63,7 +60,7 @@ namespace DeaconCCGManagement.Services
                 if (!CanViewAllRecords(user.Email))
                 {
                     // If denied permission, get all records for user's CCG only
-                    return GetContactRecordsForCcg(page, itemsPerPage, archive, user, dateTimeOffset,
+                    return GetContactRecordsForCcg(user.CcgId, page, itemsPerPage, archive, user, dateTimeOffset,
                        query, out actionResult, out totalItemsCount).ToList();
                 }
 
@@ -76,11 +73,11 @@ namespace DeaconCCGManagement.Services
             }
 
             // Get all contact records for the user's CCG only
-            return GetContactRecordsForCcg(page, itemsPerPage, archive, user, dateTimeOffset, query,
+            return GetContactRecordsForCcg(user.CcgId, page, itemsPerPage, archive, user, dateTimeOffset, query,
                 out actionResult, out totalItemsCount).ToList();
         }
 
-        private IEnumerable<ContactRecord> GetContactRecordsForCcg(int? page, int? itemsPerPage, bool archive,
+        private IEnumerable<ContactRecord> GetContactRecordsForCcg(int? ccgId, int? page, int? itemsPerPage, bool archive,
             CCGAppUser user, DateTime dateTimeOffset, string query,
             out ActionResult actionResult, out int totalItemsCount)
         {
@@ -88,7 +85,7 @@ namespace DeaconCCGManagement.Services
 
             // find contact records of members in the user's CCG
             return unitOfWork.ContactRecordRepository.GetContactRecords(out totalItemsCount,
-                c => c.AppUser.CcgId == user.CcgId
+                c => c.AppUser.CcgId == ccgId
                 && c.Archive == archive
                 && c.Timestamp > dateTimeOffset
                 && c.ContactType.Name != _prayerRequestName
