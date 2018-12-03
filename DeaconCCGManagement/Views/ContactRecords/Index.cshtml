@@ -188,7 +188,7 @@ the Create button doesn't show up when nav back*@
                                 })">
                         @Html.DisplayNameFor(model => model.ContactRecords.First().ContactDate)
                         @{
-                            var dateSortIcon = Model.Params.ContactsSort != ContactsSort.DateAscending ? "fa fa-sort-asc" : "fa fa-sort-desc";
+                            var dateSortIcon = Model.Params.ContactsSort != ContactsSort.DateAscending ? "fa fa-sort-desc" : "fa fa-sort-asc";
                         }
                         <i class="@dateSortIcon"></i>
                     </a>
