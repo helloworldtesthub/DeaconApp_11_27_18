@@ -69,7 +69,7 @@ namespace DeaconCCGManagement.Controllers
                     int totalItemsCount = 0;
 
                     var contactRecords = _contactRecordsService.GetContactRecords(memberId, ccgId, getAll,
-                        archive, user, dateFilter, query, out actionResult, out totalItemsCount);
+                        archive, user, dateFilter, query, ContactsSort.DateAscending, out actionResult, out totalItemsCount);
 
                     contactRecords = _contactRecordsService.SearchContactRecords(query, contactRecords);
                     contactRecords = _contactRecordsService.RemovePrayerRequests(contactRecords);

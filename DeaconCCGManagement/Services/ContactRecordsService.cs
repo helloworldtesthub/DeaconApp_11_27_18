@@ -27,7 +27,7 @@ namespace DeaconCCGManagement.Services
         public IEnumerable<ContactRecord> GetContactRecords(
             int? memberId, int? ccgId, bool getAll,
             bool archive, CCGAppUser user, DateRangeFilter dateRangeFilter,
-            string query, out ActionResult actionResult, out int totalItemsCount, int? page = null, int? itemsPerPage = null)
+            string query, ContactsSort contactsSort, out ActionResult actionResult, out int totalItemsCount, int? page = null, int? itemsPerPage = null)
         {
             actionResult = null;
             DateTime dateTimeOffset;
@@ -45,13 +45,13 @@ namespace DeaconCCGManagement.Services
                         && c.Archive == archive
                         && c.Timestamp > dateTimeOffset
                         && c.ContactType.Name != _prayerRequestName
-                        && (c.Subject.Contains(query) || c.Comments.Contains(query)), page, itemsPerPage).ToList();
+                        && (c.Subject.Contains(query) || c.Comments.Contains(query)), page, itemsPerPage, contactsSort).ToList();
             }
             // Get all contact records for a CCG passed to parameter
             if (ccgId != null && ccgId != -1)
             {    
                 return GetContactRecordsForCcg(ccgId, page, itemsPerPage, 
-                    archive, user, dateTimeOffset, query,
+                    archive, user, dateTimeOffset, query, contactsSort,
                     out actionResult, out totalItemsCount).ToList();
             }
             // Get all contact records; admin or leadership only
@@ -61,7 +61,7 @@ namespace DeaconCCGManagement.Services
                 {
                     // If denied permission, get all records for user's CCG only
                     return GetContactRecordsForCcg(user.CcgId, page, itemsPerPage, archive, user, dateTimeOffset,
-                       query, out actionResult, out totalItemsCount).ToList();
+                       query, contactsSort, out actionResult, out totalItemsCount).ToList();
                 }
 
                 // Gets all contact records. 
@@ -69,16 +69,16 @@ namespace DeaconCCGManagement.Services
                    .GetContactRecords(out totalItemsCount, c => c.Archive == archive
                    && c.Timestamp > dateTimeOffset
                    && c.ContactType.Name != _prayerRequestName
-                   && (c.Subject.Contains(query) || c.Comments.Contains(query)), page, itemsPerPage).ToList();
+                   && (c.Subject.Contains(query) || c.Comments.Contains(query)), page, itemsPerPage, contactsSort).ToList();
             }
 
             // Get all contact records for the user's CCG only
-            return GetContactRecordsForCcg(user.CcgId, page, itemsPerPage, archive, user, dateTimeOffset, query,
+            return GetContactRecordsForCcg(user.CcgId, page, itemsPerPage, archive, user, dateTimeOffset, query, contactsSort,
                 out actionResult, out totalItemsCount).ToList();
         }
 
         private IEnumerable<ContactRecord> GetContactRecordsForCcg(int? ccgId, int? page, int? itemsPerPage, bool archive,
-            CCGAppUser user, DateTime dateTimeOffset, string query,
+            CCGAppUser user, DateTime dateTimeOffset, string query, ContactsSort contactsSort,
             out ActionResult actionResult, out int totalItemsCount)
         {
             actionResult = null;
@@ -89,7 +89,7 @@ namespace DeaconCCGManagement.Services
                 && c.Archive == archive
                 && c.Timestamp > dateTimeOffset
                 && c.ContactType.Name != _prayerRequestName
-                && (c.Subject.Contains(query) || c.Comments.Contains(query)), page, itemsPerPage).ToList();
+                && (c.Subject.Contains(query) || c.Comments.Contains(query)), page, itemsPerPage, contactsSort).ToList();
         }
         /// <summary>
         /// Authorize user to view all contact records.

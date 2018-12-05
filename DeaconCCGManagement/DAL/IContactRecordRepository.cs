@@ -1,4 +1,5 @@
-﻿using DeaconCCGManagement.Models;
+﻿using DeaconCCGManagement.enums;
+using DeaconCCGManagement.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,7 @@ namespace DeaconCCGManagement.DAL
         // unique to this repository
         ContactRecord FindById(int? id);
         IEnumerable<ContactRecord> GetContactRecords(out int totalItemCount, Expression<Func<ContactRecord, bool>> predicate = null,
-            int? pageIndex = null, int? pageSize = null);
+            int? pageIndex = null, int? pageSize = null, ContactsSort contactsSort=ContactsSort.DateAscending);
         void Add(ContactRecord entity);
         void AddOrUpdate(ContactRecord entity);
         void AddToPassAlongRecords(ContactRecord entity);

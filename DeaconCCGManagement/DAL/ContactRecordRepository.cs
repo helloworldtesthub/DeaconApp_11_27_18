@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
+using DeaconCCGManagement.enums;
 using DeaconCCGManagement.Models;
 
 namespace DeaconCCGManagement.DAL
@@ -33,7 +34,7 @@ namespace DeaconCCGManagement.DAL
         /// <param name="pageSize">Records per page.</param>
         /// <returns></returns>
         public IEnumerable<ContactRecord> GetContactRecords(out int totalItemsCount, Expression<Func<ContactRecord, bool>> predicate = null,
-            int? pageIndex = null, int? pageSize = null)
+            int? pageIndex = null, int? pageSize = null, ContactsSort contactsSort = ContactsSort.DateAscending)
         {
 
             // log sql to console for debug
@@ -54,15 +55,29 @@ namespace DeaconCCGManagement.DAL
                 // No page index or size given so get all records that satisfy predicate.
                 if (pageIndex == null || pageSize == null)
                     return dbSet.AsNoTracking().Include(contactTypeTxt).Where(predicate).ToList(); 
-                
 
-                // Pull only records needed for page view.
-                return dbSet.Include(contactTypeTxt)
-                    .AsNoTracking()
-                    .Where(predicate)
-                    .OrderBy(c => c.CCGMember.LastName) // Needed to satisfy Skip()
-                    .Skip(((int)pageIndex - 1) * (int)pageSize)
-                    .Take((int)pageSize).ToList();
+                if (contactsSort == ContactsSort.DateAscending)
+                {
+                    // Pull only records needed for page view.
+                    return dbSet.Include(contactTypeTxt)
+                        .AsNoTracking()
+                        .Where(predicate)
+                        .OrderBy(c => c.ContactDate) // Needed to satisfy Skip()
+                        .Skip(((int)pageIndex - 1) * (int)pageSize)
+                        .Take((int)pageSize).ToList();
+                }
+                else
+                {
+                    // Pull only records needed for page view.
+                    return dbSet.Include(contactTypeTxt)
+                        .AsNoTracking()
+                        .Where(predicate)
+                        .OrderByDescending(c => c.ContactDate) // Needed to satisfy Skip()
+                        .Skip(((int)pageIndex - 1) * (int)pageSize)
+                        .Take((int)pageSize).ToList();
+                }
+
+
             }
 
             // Get total item count for pagination
@@ -74,7 +89,7 @@ namespace DeaconCCGManagement.DAL
 
             // Pull only records needed for page view.
             return dbSet.AsNoTracking().Include(contactTypeTxt)
-                .OrderBy(c => c.CCGMember.LastName)
+                .OrderByDescending(c => c.ContactDate)
                 .Skip(((int)pageIndex - 1) * (int)pageSize)
                 .Take((int)pageSize).ToList();
         }

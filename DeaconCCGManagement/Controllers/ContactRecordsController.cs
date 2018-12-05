@@ -64,10 +64,10 @@ namespace DeaconCCGManagement.Controllers
             ActionResult actionResult;
 
             // used for pagination
-            int totalItemsCount = 0;
+            int totalItemsCount = 0;       
 
             var contactRecords = _service.GetContactRecords(memberId, ccgId, getAll, archive,
-                user, dateFilter, query, out actionResult, out totalItemsCount, (int)page, (int)itemsPerPage);
+                user, dateFilter, query, contactsSort, out actionResult, out totalItemsCount, (int)page, (int)itemsPerPage);
 
             if (actionResult != null) return actionResult;
 
