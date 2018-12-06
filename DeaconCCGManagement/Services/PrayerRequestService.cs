@@ -38,17 +38,19 @@ namespace DeaconCCGManagement.Services
             // not leadership so only get prayer requests within ccg
             if (!getAll && ccgId == null) ccgId = user.CcgId;
 
-            prayerRequests = GetPrayerRequests(page, itemsPerPage, out totalItemsCount, memberId,
-                dateTimeOffset, ccgId, getAll, user, query).ToList();
+            return GetPrayerRequests(page, itemsPerPage, out totalItemsCount, memberId,
+                dateTimeOffset, ccgId, getAll, user, query, contactsSort).ToList();
 
+            // Sorting now done at database level because of pagination
             // Sort prayer requests
-            return SortContactRecords(contactsSort, prayerRequests).ToList();
+            // return SortContactRecords(contactsSort, prayerRequests).ToList();
         }
 
 
         public IEnumerable<ContactRecord> GetPrayerRequests(int? page, int? itemsPerPage, 
             out int totalItemsCount, int? memberId, 
-            DateTime dateTimeOffset, int? ccgId, bool getAll, CCGAppUser user, string query)
+            DateTime dateTimeOffset, int? ccgId, bool getAll, CCGAppUser user, string query,
+            ContactsSort contactsSort = ContactsSort.DateDescending)
         {
             // Prevents having one query for search and one for no search.
             if (query == null) query = "";
@@ -61,7 +63,7 @@ namespace DeaconCCGManagement.Services
                 return unitOfWork.ContactRecordRepository
                     .GetContactRecords(out totalItemsCount, cr => cr.ContactTypeId == contactType.Id
                                 && cr.CCGMemberId == memberId && cr.Timestamp > dateTimeOffset
-                                && (cr.Subject.Contains(query) || cr.Comments.Contains(query)), page, itemsPerPage).ToList();
+                                && (cr.Subject.Contains(query) || cr.Comments.Contains(query)), page, itemsPerPage, contactsSort).ToList();
             }
             if (ccgId != null && ccgId != -1)
             {
@@ -69,7 +71,7 @@ namespace DeaconCCGManagement.Services
                 return unitOfWork.ContactRecordRepository
                     .GetContactRecords(out totalItemsCount, cr => cr.ContactTypeId == contactType.Id
                                 && cr.CCGMember.CcgId == ccgId && cr.Timestamp > dateTimeOffset
-                                && (cr.Subject.Contains(query) || cr.Comments.Contains(query)), page, itemsPerPage).ToList();
+                                && (cr.Subject.Contains(query) || cr.Comments.Contains(query)), page, itemsPerPage, contactsSort).ToList();
             }
             if (!getAll)
             {
@@ -77,7 +79,7 @@ namespace DeaconCCGManagement.Services
                 return unitOfWork.ContactRecordRepository
                     .GetContactRecords(out totalItemsCount, cr => cr.ContactTypeId == contactType.Id
                     && cr.AppUser.CcgId == user.CcgId && cr.Timestamp > dateTimeOffset
-                    && (cr.Subject.Contains(query) || cr.Comments.Contains(query)), page, itemsPerPage).ToList();
+                    && (cr.Subject.Contains(query) || cr.Comments.Contains(query)), page, itemsPerPage, contactsSort).ToList();
             }
 
             // getAll is true
@@ -85,7 +87,7 @@ namespace DeaconCCGManagement.Services
             return unitOfWork.ContactRecordRepository
                 .GetContactRecords(out totalItemsCount, cr => cr.ContactTypeId == contactType.Id
                 && cr.Timestamp > dateTimeOffset
-                && (cr.Subject.Contains(query) || cr.Comments.Contains(query)), page, itemsPerPage).ToList();
+                && (cr.Subject.Contains(query) || cr.Comments.Contains(query)), page, itemsPerPage, contactsSort).ToList();
             
         } 
 

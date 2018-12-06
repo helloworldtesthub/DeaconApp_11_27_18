@@ -98,8 +98,6 @@
     <h4>@Model.CcgName</h4>
 }
 
-@*TODO: pass member id to controller and back to view
-the Create button doesn't show up when nav back*@
 
 @if (Model.Params.MemberId != null)
 {
@@ -137,7 +135,7 @@ the Create button doesn't show up when nav back*@
     @Html.Partial("_SearchFieldAndButton",  
         new SearchViewModel
         {
-            Placeholder = "search term",
+            Placeholder = "search subject and comment",
             Value = Model.Params.Query
         })
 }
@@ -153,7 +151,7 @@ the Create button doesn't show up when nav back*@
     @Html.Hidden("getAll", Model.Params.GetAll)
     @Html.Hidden("itemsPerPage", Model.Params.ItemsPerPage)
     @Html.Hidden("archive", Model.Params.Archive)
-    @Html.Hidden("query", Model.Params.Query)
+    <input id="query" name="query" type="hidden" value="" />
 
     <p>
         @{
@@ -188,7 +186,7 @@ the Create button doesn't show up when nav back*@
                                 })">
                         @Html.DisplayNameFor(model => model.ContactRecords.First().ContactDate)
                         @{
-                            var dateSortIcon = Model.Params.ContactsSort != ContactsSort.DateAscending ? "fa fa-sort-desc" : "fa fa-sort-asc";
+                            var dateSortIcon = Model.Params.ContactsSort != ContactsSort.DateAscending ? "fa fa-sort-asc" : "fa fa-sort-desc";
                         }
                         <i class="@dateSortIcon"></i>
                     </a>
@@ -354,4 +352,17 @@ the Create button doesn't show up when nav back*@
 @section Scripts{
     @Scripts.Render("~/Scripts/App/InitBootstrapTooltipAndPopover.js")
     @Scripts.Render("~/Scripts/App/SetBackToListLink.js")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("input[name = 'query']").blur(function () {
+                var value = $("input[name = 'query']").val();
+                if (value === "" || value === null) {
+                    '@Model.Params.Query' = value;
+                    alert("empty");
+                }
+                alert("value: " + value);
+            }); 
+        }); 
+    </script>
 }

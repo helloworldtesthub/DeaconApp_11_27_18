@@ -26,6 +26,9 @@ namespace DeaconCCGManagement.DAL
         ContactRecord FindById(int? id);
         IEnumerable<ContactRecord> GetContactRecords(out int totalItemCount, Expression<Func<ContactRecord, bool>> predicate = null,
             int? pageIndex = null, int? pageSize = null, ContactsSort contactsSort=ContactsSort.DateAscending);
+        IEnumerable<ContactRecord> GetContactRecordsHelper(ContactsSort contactsSort,
+             string contactTypeName, int? pageIndex, int? pageSize,
+            Expression<Func<ContactRecord, bool>> predicate = null);
         void Add(ContactRecord entity);
         void AddOrUpdate(ContactRecord entity);
         void AddToPassAlongRecords(ContactRecord entity);

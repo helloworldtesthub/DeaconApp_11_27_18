@@ -34,7 +34,7 @@ namespace DeaconCCGManagement.DAL
         /// <param name="pageSize">Records per page.</param>
         /// <returns></returns>
         public IEnumerable<ContactRecord> GetContactRecords(out int totalItemsCount, Expression<Func<ContactRecord, bool>> predicate = null,
-            int? pageIndex = null, int? pageSize = null, ContactsSort contactsSort = ContactsSort.DateAscending)
+            int? pageIndex = null, int? pageSize = null, ContactsSort contactsSort = ContactsSort.DateDescending)
         {
 
             // log sql to console for debug
@@ -46,52 +46,87 @@ namespace DeaconCCGManagement.DAL
             var dbSet = context.Set<ContactRecord>();
             totalItemsCount = 0;
 
-            string contactTypeTxt = "ContactType";
+            string contactTypeName = "ContactType";
             if (predicate != null)
             {   
                 // Get total item count for pagination
-                totalItemsCount = dbSet.Include(contactTypeTxt).AsNoTracking().Where(predicate).Count();
+                totalItemsCount = dbSet.Include(contactTypeName).AsNoTracking().Where(predicate).Count();
 
                 // No page index or size given so get all records that satisfy predicate.
                 if (pageIndex == null || pageSize == null)
-                    return dbSet.AsNoTracking().Include(contactTypeTxt).Where(predicate).ToList(); 
+                    return dbSet.AsNoTracking().Include(contactTypeName).Where(predicate).ToList();
 
-                if (contactsSort == ContactsSort.DateAscending)
-                {
-                    // Pull only records needed for page view.
-                    return dbSet.Include(contactTypeTxt)
-                        .AsNoTracking()
-                        .Where(predicate)
-                        .OrderBy(c => c.ContactDate) // Needed to satisfy Skip()
-                        .Skip(((int)pageIndex - 1) * (int)pageSize)
-                        .Take((int)pageSize).ToList();
-                }
-                else
-                {
-                    // Pull only records needed for page view.
-                    return dbSet.Include(contactTypeTxt)
-                        .AsNoTracking()
-                        .Where(predicate)
-                        .OrderByDescending(c => c.ContactDate) // Needed to satisfy Skip()
-                        .Skip(((int)pageIndex - 1) * (int)pageSize)
-                        .Take((int)pageSize).ToList();
-                }
-
-
+                // Pull only records needed for page view.
+                return GetContactRecordsHelper(contactsSort, contactTypeName, 
+                    pageIndex, pageSize, predicate);
             }
 
             // Get total item count for pagination
-            totalItemsCount = dbSet.Include(contactTypeTxt).AsNoTracking().Count();
+            totalItemsCount = dbSet.Include(contactTypeName).AsNoTracking().Count();
 
             // No page index or size given so get all records.
             if (pageIndex == null && pageSize == null)            
-                return dbSet.AsNoTracking().Include(contactTypeTxt).ToList();            
+                return dbSet.AsNoTracking().Include(contactTypeName).ToList();
 
             // Pull only records needed for page view.
-            return dbSet.AsNoTracking().Include(contactTypeTxt)
-                .OrderByDescending(c => c.ContactDate)
-                .Skip(((int)pageIndex - 1) * (int)pageSize)
-                .Take((int)pageSize).ToList();
+            return GetContactRecordsHelper(contactsSort, contactTypeName,
+                  pageIndex, pageSize);
+
+        }
+
+        public IEnumerable<ContactRecord> GetContactRecordsHelper(ContactsSort contactsSort,
+             string contactTypeName, int? pageIndex, int? pageSize,
+            Expression<Func<ContactRecord, bool>> predicate = null)
+        {
+        
+            if (predicate == null)
+            {
+                predicate = c => c.Archive == false;
+            }
+
+            // Pull only records needed for page view.
+            // switch statement for filtering options
+            switch (contactsSort)
+            {
+                case ContactsSort.GroupByMember:
+                    return dbSet.Include(contactTypeName)
+                    .AsNoTracking()
+                    .Where(predicate)
+                    .OrderBy(c => c.CCGMember.LastName)
+                    .Skip(((int)pageIndex - 1) * (int)pageSize)
+                    .Take((int)pageSize).ToList();
+                case ContactsSort.GroupByDeacon:
+                    return dbSet.Include(contactTypeName)
+                     .AsNoTracking()
+                     .Where(predicate)
+                     .OrderBy(c => c.AppUser.LastName)
+                     .Skip(((int)pageIndex - 1) * (int)pageSize)
+                     .Take((int)pageSize).ToList();
+                case ContactsSort.GroupByContactType:
+                    return dbSet.Include(contactTypeName)
+                     .AsNoTracking()
+                     .Where(predicate)
+                     .OrderBy(c => c.ContactType.Name)
+                     .Skip(((int)pageIndex - 1) * (int)pageSize)
+                     .Take((int)pageSize).ToList();
+                case ContactsSort.DateAscending:
+                    return dbSet.Include(contactTypeName)
+                        .AsNoTracking()
+                        .Where(predicate)
+                        .OrderBy(c => c.ContactDate)
+                        .Skip(((int)pageIndex - 1) * (int)pageSize)
+                        .Take((int)pageSize).ToList();
+                case ContactsSort.DateDescending:
+                case ContactsSort.None:
+                default:
+                    // DateDescending 
+                    return dbSet.Include(contactTypeName)
+                        .AsNoTracking()
+                        .Where(predicate)
+                        .OrderByDescending(c => c.ContactDate)
+                        .Skip(((int)pageIndex - 1) * (int)pageSize)
+                        .Take((int)pageSize).ToList();
+            }
         }
 
         public override void Add(ContactRecord entity)
@@ -206,6 +241,6 @@ namespace DeaconCCGManagement.DAL
 
             context.SaveChanges();
             
-        }
+        }       
     }
 }

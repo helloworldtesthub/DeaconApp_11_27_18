@@ -61,6 +61,8 @@ namespace DeaconCCGManagement.ViewModels
         [Display(Name = "Duration (hr:min)")]
         public TimeSpan? Duration { get; set; }
 
+        public string DurationStr { get; set; }
+
         public string ReturnUrl { get; set; }
 
         public int CCGMemberId { get; set; }
@@ -93,6 +95,8 @@ namespace DeaconCCGManagement.ViewModels
     {
         [Display(Name = "Contact Type")]
         public SelectList ContactTypes { get; set; }
+        public int hour { get; set; }
+        public int minutes { get; set; }
     }
 
     public class DetailsContactRecordViewModel : ContactRecordViewModel

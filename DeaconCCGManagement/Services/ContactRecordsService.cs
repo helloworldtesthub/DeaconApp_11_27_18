@@ -374,5 +374,17 @@ namespace DeaconCCGManagement.Services
             }
             return viewModel;
         }
+
+        public TimeSpan? GetTimespanFromDurationStr(string duration)
+        {
+            int durationInt;
+            if (int.TryParse(duration, out durationInt))
+            {
+                int hour = durationInt > 59 ? (durationInt / 60) : 0;
+                int minutes = durationInt < 60 ? durationInt : durationInt % 60;
+                return new TimeSpan(hour, minutes, 0);
+            }
+            return null;
+        }
     }
 }

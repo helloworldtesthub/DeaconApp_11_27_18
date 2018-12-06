@@ -73,7 +73,8 @@ namespace DeaconCCGManagement.Controllers
 
             #region sort, truncate, keep private, and map models
 
-            contactRecords = _service.SortContactRecords(contactsSort, contactRecords);
+            // Sorting now done in database query 
+            // contactRecords = _service.SortContactRecords(contactsSort, contactRecords);
 
             var contactRecordsVM = Mapper.Map<IList<ContactRecordViewModel>>(contactRecords);
 
@@ -181,6 +182,8 @@ namespace DeaconCCGManagement.Controllers
             if (viewModel.Subject == null) viewModel.Subject = "";
             if (viewModel.Comments == null) viewModel.Comments = "";
 
+            viewModel.Duration = _service.GetTimespanFromDurationStr(viewModel.DurationStr);
+
             // Sanitize data input with AntiXssEncoder
             // eg.: example: " ==> &quot;
             viewModel = (CreateContactRecordViewModel)_service.SanitizeContactRecordViewModel(viewModel);
@@ -254,6 +257,12 @@ namespace DeaconCCGManagement.Controllers
             var contactTypes = unitOfWork.ContactTypeRepository.GetContactTypesSorted();
             viewModel.ContactTypes = new SelectList(contactTypes, "Id", "Name");
 
+            if (viewModel.Duration != null)
+            {
+                viewModel.hour = viewModel.Duration.Value.Hours;
+                viewModel.minutes = viewModel.Duration.Value.Minutes;
+            }        
+
             return View(viewModel);
         }
 
@@ -263,6 +272,8 @@ namespace DeaconCCGManagement.Controllers
         public ActionResult Edit(EditContactRecordViewModel viewModel)
         {
             if (!ModelState.IsValid) return View(viewModel);
+
+            viewModel.Duration = _service.GetTimespanFromDurationStr(viewModel.DurationStr);
 
             // Sanitize data input with AntiXssEncoder
             viewModel = (EditContactRecordViewModel)_service.SanitizeContactRecordViewModel(viewModel);
